@@ -14,6 +14,7 @@ import { Category } from '../../category/models/category.model';
 export class AddBlogPostComponent implements OnInit {
   model: AddBlogPost;
   categories$?: Observable<Category[]>;
+  isImageSelectorVisible: boolean = false;
   private addBlogPostSubscription ?: Subscription;
 
   constructor(private blogPostService: BlogPostService,
@@ -34,6 +35,8 @@ export class AddBlogPostComponent implements OnInit {
   
   ngOnInit(): void {
     this.categories$ = this.categoryService.getAllcategories();
+
+    
   }
 
   onFormSubmit() {
@@ -44,4 +47,13 @@ export class AddBlogPostComponent implements OnInit {
       }
     });
   }
+  
+  openImageSelector(): void {
+    this.isImageSelectorVisible = true;
+  }
+
+  closeImageSelector(): void {
+    this.isImageSelectorVisible = false;
+  }
+
 }
